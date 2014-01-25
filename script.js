@@ -45,13 +45,13 @@ h1.setAttribute("id","qTitle");
 insertElem(h1);
 
 //create ul
-var ul = document.createElement("ul");        // swap for function
-ul.setAttribute("id","list");                // swap for function
+var ul = document.createElement("ul");        
+ul.setAttribute("id","list");                
 insertElem(ul);
 
 //create button
-var btn = document.createElement("button");      // swap for function
-btn.setAttribute("id","nextBtn");               // swap for function
+var btn = document.createElement("button");      
+btn.setAttribute("id","nextBtn");               
 var btnText = document.createTextNode("Next");
 btn.appendChild(btnText);
 insertElem(btn);
@@ -115,14 +115,14 @@ btn.onclick = function(){
     while(ul.firstChild){
         ul.removeChild(ul.firstChild)
     }
-    //
+    //if not make another list 
     if(i<allQuestionsLen){
         createContent(i);
     }
 else{
- h1.innerHTML = "Results";
+ h1.innerHTML = "Results";//show the result
  var p = document.createElement("p");
- var text = document.createTextNode("Your score is " + correctAnswers + "/" + allQuestionsLen);
+ var text = document.createTextNode("Your score is " + correctAnswers + "/" + allQuestionsLen);//the score of answered questions
  p.appendChild(text);
  ul.appendChild(p);
  body.removeChild(btn);
