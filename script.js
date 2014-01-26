@@ -3,7 +3,7 @@
 (function(){
     var allQuestions = [
     {
-        question: "Which movie did Tom Hanks lost 50 pounds to play the lead role ?",
+        question: "Which movie did Tom Hanks loose 50 pounds to play the lead role ?",
         choices:["The Terminal","Forest Gump","Saving Private Ryan","Cast Away"],
         correctAnswer:3
     },
