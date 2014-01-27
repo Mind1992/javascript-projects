@@ -30,69 +30,43 @@
 
 ];
 
-//create basic elements
-
-//create div
-var body = document.getElementById("body");
-var theFirstChild = body.firstChild;
-var div = document.createElement("div");
-div.setAttribute("id","wrapper");
-insertElem(div);
-
-//create h1
-var h1 = document.createElement("h1");
-h1.setAttribute("id","qTitle");
-insertElem(h1);
-
-//create ul
-var ul = document.createElement("ul");        
-ul.setAttribute("id","list");                
-insertElem(ul);
-
-//create button
-var btn = document.createElement("button");      
-btn.setAttribute("id","nextBtn");               
-var btnText = document.createTextNode("Next");
-btn.appendChild(btnText);
-insertElem(btn);
-
-//Insert elements to HTML outline
-function insertElem (elem){
-    body.insertBefore(elem ,theFirstChild);
-}
-
-
-//Initilize some vars
+//get reference to the basic tags and initialize global variables
+var div = document.getElementById("wrapper");
+var h2 = document.getElementById("qTitle");
+var ul = document.getElementById("list");
+var nextBtn = document.getElementById("nextBtn");
 var i = 0;
 var allQuestionsLen = allQuestions.length;
 var correctAnswers = 0;
 
 
-// Create content for h1 and ul
+//create content for h1 and ul
 function createContent(i){
-    for(var j= 0,len=allQuestions[i].choices.length;j<len;j++){
+    for(var j= 0, len = allQuestions[i].choices.length; j<len; j++){
         var li = document.createElement("li");
-    //create radio buttons
+        //create radio buttons
         var radio = document.createElement("input");
         radio.setAttribute("type","radio");
-        radio.setAttribute("name", "quest" + i);
+        radio.setAttribute("name", "question" + i);
         radio.setAttribute("value", allQuestions[i].choices[j]);
-    //create text for each question
+
+        //create text of radio buttons
         var text = document.createTextNode(allQuestions[i].choices[j]);
+
 
         ul.appendChild(li);
         li.appendChild(radio);
         li.appendChild(text);
-        h1.innerHTML = allQuestions[i].question;
+        h2.innerHTML = allQuestions[i].question;
     }
 }
-//starting point
-createContent(0);
+//intial population
+createContent(i);
 
 
-//create button functionality
-btn.onclick = function(){
-    var radioBtns = document.getElementsByName("quest" + i);// a reference to all radio btns
+
+nextBtn.onclick = function(){
+    var radioBtns = document.getElementsByName("question" + i);// a reference to all radio btns
     var checkedBtn = false; //turn to true if checked
 //iterate through to find the checked radio button
  for(var k = 0;k<radioBtns.length;k++){
@@ -115,17 +89,17 @@ btn.onclick = function(){
     while(ul.firstChild){
         ul.removeChild(ul.firstChild)
     }
-    //if not make another list 
+    //
     if(i<allQuestionsLen){
         createContent(i);
     }
 else{
- h1.innerHTML = "Results";//show the result
+ h2.innerHTML = "Results";
  var p = document.createElement("p");
- var text = document.createTextNode("Your score is " + correctAnswers + "/" + allQuestionsLen);//the score of answered questions
+ var text = document.createTextNode("Your score is " + correctAnswers + "/" + allQuestionsLen);
  p.appendChild(text);
  ul.appendChild(p);
- body.removeChild(btn);
+
 
 
     }
@@ -133,6 +107,8 @@ else{
 }
 
 })();
+
+
 
 
 
