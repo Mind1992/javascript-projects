@@ -99,7 +99,9 @@ else{
  var text = document.createTextNode("Your score is " + correctAnswers + "/" + allQuestionsLen);
  p.appendChild(text);
  ul.appendChild(p);
-
+if(nextBtn){
+    nextBtn.parentNode.removeChild(nextBtn);
+}
 
 
     }
